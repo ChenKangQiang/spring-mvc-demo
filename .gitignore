@@ -1,16 +1,30 @@
-# Created by .ignore support plugin (hsz.mobi)
-### Maven template
-target/
-.idea/
-*.iml
-pom.xml.tag
-pom.xml.releaseBackup
-pom.xml.versionsBackup
-pom.xml.next
-release.properties
-dependency-reduced-pom.xml
-buildNumber.properties
-.mvn/timing.properties
+# Android generated
+bin/
+gen/
+classes/
+gen-external-apklibs/
 
-# Avoid ignoring Maven wrapper jar file (.jar files are usually ignored)
-!/.mvn/wrapper/maven-wrapper.jar
+# Ant
+local.properties
+
+# Maven
+target/
+release.properties
+
+# Eclipse
+.classpath
+.project
+.externalToolBuilders/
+.metadata
+.settings
+
+# IntelliJ
+*.iml
+/.idea/
+*.ipr
+*.iws
+out/
+
+# Mac
+.DS_Store
+
