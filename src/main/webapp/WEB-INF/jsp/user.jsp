@@ -15,7 +15,7 @@
 
 <h2>Student Information</h2>
 <%--action中为绝对路径--%>
-<form:form method="POST" action="/spring-demo/addUser">
+<form:form method="POST" action="/spring-mvc-demo/addUser">
     <table>
         <tr>
             <td><form:label path="username">Name</form:label></td>
