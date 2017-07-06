@@ -7,9 +7,11 @@
        http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd
        http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc.xsd">
 
-    <!--如果spring-context.xml中没有配置<mvc:annotation-driven />
-        则需在dispatcher的配置文件中扫描并注册controller-->
-    <!--<context:component-scan base-package="edu.tongji.comm.spring.demo.controller" />-->
+    <!--扫描并注册controller-->
+    <context:component-scan base-package="edu.tongji.comm.spring.demo.controller" />
+
+    <!--开启springMVC支持-->
+    <mvc:annotation-driven />
 
     <!--拦截器-->
     <mvc:interceptors>

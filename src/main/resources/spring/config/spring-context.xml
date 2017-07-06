@@ -3,22 +3,17 @@
        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
        xmlns:context="http://www.springframework.org/schema/context"
        xmlns:aop="http://www.springframework.org/schema/aop"
-       xmlns:mvc="http://www.springframework.org/schema/mvc"
        xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
        http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd
-       http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop.xsd
-       http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc.xsd">
+       http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop.xsd">
 
     <!--开启注解扫描-->
-    <!--<context:component-scan-->
-            <!--base-package="edu.tongji.comm.spring.demo.aspect,-->
-                          <!--edu.tongji.comm.spring.demo.dao,-->
-                          <!--edu.tongji.comm.spring.demo.service" />-->
+    <context:component-scan
+            base-package="edu.tongji.comm.spring.demo.aspect,
+                          edu.tongji.comm.spring.demo.dao,
+                          edu.tongji.comm.spring.demo.service" />
 
-    <context:component-scan base-package="edu.tongji.comm.spring.demo" />
-
-    <!--开启对 @controller、@requestingMapping 的支持，如果不开启该配置，则需在dispatcher-servlet.xml中扫描-->
-    <mvc:annotation-driven />
+    <!--<context:component-scan base-package="edu.tongji.comm.spring.demo" />-->
 
     <!--开启AOP注解支持-->
     <aop:aspectj-autoproxy />
