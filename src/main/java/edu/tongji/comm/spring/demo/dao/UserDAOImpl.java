@@ -12,8 +12,9 @@ public class UserDAOImpl implements UserDAO {
     public User selectUser(int id) {
         User user = new User();
         user.setId(id);
+        user.setAge(26);
         user.setUsername("Tom");
-        user.setPassword("123456");
+        user.setEmail("tom@meituan.com");
         return user;
     }
 

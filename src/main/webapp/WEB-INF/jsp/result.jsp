@@ -26,6 +26,10 @@
         <td>ID</td>
         <td>${id}</td>
     </tr>
+    <tr>
+        <td>Email</td>
+        <td>${email}</td>
+    </tr>
 </table>
 </body>
 </html>

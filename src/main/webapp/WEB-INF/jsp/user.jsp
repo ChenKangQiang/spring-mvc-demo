@@ -26,8 +26,12 @@
             <td><form:input path="age" /></td>
         </tr>
         <tr>
-            <td><form:label path="id">id</form:label></td>
+            <td><form:label path="id">Id</form:label></td>
             <td><form:input path="id" /></td>
+        </tr>
+        <tr>
+            <td><form:label path="email">Email</form:label></td>
+            <td><form:input path="email" /></td>
         </tr>
         <tr>
             <td colspan="2">
