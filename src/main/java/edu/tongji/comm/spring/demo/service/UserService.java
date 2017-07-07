@@ -10,7 +10,7 @@ import org.springframework.stereotype.Service;
  * Created by chen on 2017/7/4.
  */
 
-@Component
+@Service
 public class UserService {
 
     @Autowired

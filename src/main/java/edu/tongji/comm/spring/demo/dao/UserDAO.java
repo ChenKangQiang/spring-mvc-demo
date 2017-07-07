@@ -8,7 +8,7 @@ import org.springframework.stereotype.Repository;
  * Created by chen on 2017/7/4.
  */
 
-@Component
+@Repository
 public interface UserDAO {
 
     User getUserById(int id);
