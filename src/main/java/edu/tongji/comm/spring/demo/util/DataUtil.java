@@ -1,5 +1,7 @@
 package edu.tongji.comm.spring.demo.util;
 
+import org.apache.logging.log4j.Logger;
+
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
@@ -14,5 +16,7 @@ public class DataUtil {
 
         return ft.format(now);
     }
+
+
 
 }
