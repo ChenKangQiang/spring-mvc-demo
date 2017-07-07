@@ -29,6 +29,9 @@
             <AppenderRef ref="FileLog" />
             <AppenderRef ref="RollingFile" />
         </Logger>
+        <Logger name="edu.tongji.comm.spring.demo.dao.UserDAO" level="debug" additivity="false">
+            <AppenderRef ref="Console" />
+        </Logger>
         <!--未在log4j2.xml中配置的logger都会继承root logger-->
         <Root level="error">
             <AppenderRef ref="Console" />

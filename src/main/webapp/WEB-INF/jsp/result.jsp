@@ -19,8 +19,8 @@
         <td>${name}</td>
     </tr>
     <tr>
-        <td>Age</td>
-        <td>${age}</td>
+        <td>Password</td>
+        <td>${password}</td>
     </tr>
     <tr>
         <td>ID</td>
@@ -29,6 +29,10 @@
     <tr>
         <td>Email</td>
         <td>${email}</td>
+    </tr>
+    <tr>
+        <td>RegData</td>
+        <td>${regdata}</td>
     </tr>
 </table>
 </body>

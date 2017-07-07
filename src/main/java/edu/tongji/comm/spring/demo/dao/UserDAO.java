@@ -1,16 +1,22 @@
 package edu.tongji.comm.spring.demo.dao;
 
 import edu.tongji.comm.spring.demo.domain.User;
+import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Repository;
 
 /**
  * Created by chen on 2017/7/4.
  */
+
+@Component
 public interface UserDAO {
-    User selectUser(int id);
 
-    void addUser(User user);
+    User getUserById(int id);
 
-    void updateUser(User user);
+    int addUser(User user);
 
-    void deleteUser(int id);
+    int deleteUserById(int id);
+
+    int updateUser(User user);
+
 }

@@ -3,15 +3,21 @@
        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
        xmlns:context="http://www.springframework.org/schema/context"
        xmlns:aop="http://www.springframework.org/schema/aop"
+       xmlns:tx="http://www.springframework.org/schema/tx"
        xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
        http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd
-       http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop.xsd">
+       http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop.xsd
+       http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx.xsd">
+
+    <context:property-placeholder location="classpath*:db.properties" />
 
     <!--开启注解扫描-->
     <context:component-scan
             base-package="edu.tongji.comm.spring.demo.aspect,
                           edu.tongji.comm.spring.demo.dao,
                           edu.tongji.comm.spring.demo.service" />
+
+    <context:annotation-config />
 
     <!--<context:component-scan base-package="edu.tongji.comm.spring.demo" />-->
 
@@ -21,11 +27,62 @@
     <!--强制开启CGLIB代理-->
     <!--<aop:aspectj-autoproxy proxy-target-class="true"/>-->
 
-    <bean id="userService" class="edu.tongji.comm.spring.demo.service.UserService" >
-        <property name="userDAO" ref="userDAO" />
+    <!--开启事务注解支持-->
+    <tx:annotation-driven transaction-manager="transactionManager"/>
+
+    <!--配置事务管理器-->
+    <bean id="transactionManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
+        <property name="dataSource" ref="dataSource" />
     </bean>
 
-    <bean id="userDAO" class="edu.tongji.comm.spring.demo.dao.UserDAOImpl" />
+    <!--配置数据源，当在spring中使用mybatis时，一般不在mybatis-config中配置数据源-->
+    <bean id="dataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
+        <property name="driverClassName" value="${jdbc.driver}" />
+        <property name="url" value="${jdbc.url}" />
+        <property name="username" value="${jdbc.username}" />
+        <property name="password" value="${jdbc.password}" />
+    </bean>
+
+    <!--配置Tomcat连接池-->
+    <!--
+    <bean id="dataSource_tomcat" class="org.apache.tomcat.jdbc.pool.DataSource" destroy-method="close">
+        <property name="driverClassName" value="${jdbc.driver}" />
+        <property name="url" value="${jdbc.url}" />
+        <property name="username" value="${jdbc.username}" />
+        <property name="password" value="${jdbc.password}" />
+        <property name="initialSize" value="10" />
+        <property name="maxActive" value="100" />
+    </bean>
+    -->
+
+    <!--配置c3p0连接池-->
+    <!--
+    <bean id="dataSource_c3p0" class="com.mchange.v2.c3p0.ComboPooledDataSource" destroy-method="close">
+        <property name="driverClass" value="${jdbc.driver}" />
+        <property name="jdbcUrl" value="${jdbc.url}" />
+        <property name="user" value="${jdbc.username}" />
+        <property name="password" value="${jdbc.password}" />
+        <property name="initialPoolSize" value="10" />
+        <property name="maxPoolSize" value="100" />
+    </bean>
+    -->
+
+    <!--配置 mybatis 的 sqlSessionFactory ，sqlSessionFactory 的构建需要数据源和映射文件-->
+    <bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
+        <property name="dataSource" ref="dataSource" />
+        <!--当然还是可以使用mybatis-config.xml文件，这里利用 mybatis-config.xml 来开启日志-->
+        <property name="configLocation" value="classpath:mybatis-config.xml" />
+        <property name="mapperLocations" value="classpath*:sqlmap/UserMapper.xml" />
+        <property name="typeAliasesPackage" value="edu.tongji.comm.spring.demo.domain" />
+    </bean>
+
+
+    <!--扫描注册DAO-->
+    <bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
+        <property name="basePackage" value="edu.tongji.comm.spring.demo.dao" />
+        <property name="sqlSessionFactoryBeanName" value="sqlSessionFactory" />
+    </bean>
+
 
 </beans>
 
