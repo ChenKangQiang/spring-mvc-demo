@@ -1,5 +1,6 @@
 package edu.tongji.comm.spring.demo.interceptor;
 
+import edu.tongji.comm.spring.demo.util.DataUtil;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.springframework.web.servlet.HandlerInterceptor;
@@ -51,6 +52,9 @@ public class CommonInterceptor implements HandlerInterceptor {
      */
     public void postHandle(HttpServletRequest httpServletRequest, HttpServletResponse httpServletResponse, Object o, ModelAndView modelAndView) throws Exception {
         logger.info("==============执行顺序: 2、postHandle================");
+        if (null!=modelAndView){
+            modelAndView.addObject("serverTime", DataUtil.getTime());
+        }
     }
 
     /**
@@ -63,5 +67,6 @@ public class CommonInterceptor implements HandlerInterceptor {
      */
     public void afterCompletion(HttpServletRequest httpServletRequest, HttpServletResponse httpServletResponse, Object o, Exception e) throws Exception {
         logger.info("==============执行顺序: 3、afterCompletion================");
+
     }
 }

@@ -21,6 +21,11 @@
         </mvc:interceptor>
     </mvc:interceptors>
 
+    <!--静态资源不拦截-->
+    <mvc:resources mapping="/js/**" location="/global/js/"/>
+    <mvc:resources mapping="/styles/**" location="/global/css/"/>
+    <mvc:resources mapping="/images/**" location="/global/images/"/>
+
     <bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
         <property name="prefix" value="/WEB-INF/jsp/" />
         <property name="suffix" value=".jsp" />
